@@ -1,0 +1,21 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module", 
+        "ecmaFeatures": {
+            "jsx": true //원래 jsx 안됨 
+        }
+    },
+    "env": {
+        "browser" : true,
+        "node" :true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "plugins":[ // 어떤 문법을 가능하게 할 것인가  npm으로 따로 설치해야 함 
+        "import",
+        "react-hooks"
+    ]
+}
