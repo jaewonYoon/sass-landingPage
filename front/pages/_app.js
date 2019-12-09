@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import {Provider} from 'react-redux'; 
 import withRedux from 'next-redux-wrapper';
-import rootReducer from '../reducers';
+import rootReducer from '../reducers'; 
 import {createStore, compose, applyMiddleware} from 'redux'; 
 import createSagaMiddleware from 'redux-saga';
 const App = ({Component, store}) => {
