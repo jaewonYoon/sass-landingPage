@@ -26,6 +26,36 @@ body {
   background-color: transparent;
   height: 400px; }
 
+.item-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 50px; }
+
+.item-image-container .item-image {
+  border-radius: 20px; }
+
+.item-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left; }
+
+.item-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  margin: 50px; }
+
+.item-form > * {
+  margin: 10px; }
+
+.button-primary {
+  width: 50%;
+  height: 50px;
+  margin: 150px 120px 50px; }
 
 
 /*# sourceMappingURL=styles.chunk.css.map*/

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -241,6 +241,129 @@ const ImageComponent = ({
 
 /***/ }),
 
+/***/ "./components/ItemForm.Component.jsx":
+/*!*******************************************!*\
+  !*** ./components/ItemForm.Component.jsx ***!
+  \*******************************************/
+/*! exports provided: useInput, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useInput", function() { return useInput; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ItemForm_styles_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ItemForm.styles.scss */ "./components/ItemForm.styles.scss");
+/* harmony import */ var _ItemForm_styles_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ItemForm_styles_scss__WEBPACK_IMPORTED_MODULE_2__);
+var _jsxFileName = "C:\\Users\\jaewon\\Desktop\\web\\sass-landingPage\\front\\components\\ItemForm.Component.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+const useInput = (initValue = null) => {
+  const {
+    0: value,
+    1: setter
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initValue);
+  const handler = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
+    // setter(e.target.value);
+    console.log(e.target);
+  }, []);
+  return [value, handler];
+};
+
+const ItemForm = () => {
+  const [itemNumber, onChangeItemNumber] = useInput(1);
+  const [price, onChangePrice] = useInput(3500);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
+    className: "item-form-container",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Form"], {
+    className: "item-form",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: undefined
+  }, __jsx("label", {
+    htmlFor: "quantity",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: undefined
+  }, "\uC138\uD2B8 \uAC2F\uC218"), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["InputNumber"], {
+    size: "large",
+    min: 1,
+    max: 10,
+    defaultValue: 1,
+    onChange: onChangeItemNumber,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: undefined
+  }), __jsx("label", {
+    htmlFor: "transport",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, "\uBC30\uC1A1\uB8CC"), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+    disabled: true,
+    value: '3500원',
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    },
+    __self: undefined
+  }), __jsx("label", {
+    htmlFor: "price",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: undefined
+  }, "\uCD1D \uAE08\uC561"), __jsx("div", {
+    id: "price",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: undefined
+  }, `${price}원`), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
+    type: "primary",
+    className: "button-primary",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: undefined
+  }, "\uAD6C\uB9E4"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ItemForm);
+
+/***/ }),
+
+/***/ "./components/ItemForm.styles.scss":
+/*!*****************************************!*\
+  !*** ./components/ItemForm.styles.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./components/MainItem.Component.jsx":
 /*!*******************************************!*\
   !*** ./components/MainItem.Component.jsx ***!
@@ -255,8 +378,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! antd */ "antd");
 /* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Image_Component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Image.Component */ "./components/Image.Component.jsx");
+/* harmony import */ var _ItemForm_Component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ItemForm.Component */ "./components/ItemForm.Component.jsx");
 var _jsxFileName = "C:\\Users\\jaewon\\Desktop\\web\\sass-landingPage\\front\\components\\MainItem.Component.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -267,49 +392,43 @@ const MainItem = () => {
     className: "mainitem-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Row"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 10
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     span: 10,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 11
     },
     __self: undefined
   }, __jsx(_Image_Component__WEBPACK_IMPORTED_MODULE_2__["default"], {
     url: url,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 12
     },
     __self: undefined
   })), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Col"], {
     span: 10,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Form"], {
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 14
     },
     __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
+  }, __jsx(_ItemForm_Component__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15
     },
     __self: undefined
-  }))))));
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainItem);
@@ -366,7 +485,7 @@ const Home = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
