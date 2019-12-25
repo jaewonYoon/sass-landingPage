@@ -268,8 +268,7 @@ const useInput = (initValue = null) => {
     1: setter
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initValue);
   const handler = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
-    // setter(e.target.value);
-    console.log(e.target);
+    setter(e);
   }, []);
   return [value, handler];
 };
@@ -277,25 +276,28 @@ const useInput = (initValue = null) => {
 const ItemForm = () => {
   const [itemNumber, onChangeItemNumber] = useInput(1);
   const [price, onChangePrice] = useInput(3500);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
+    onChangePrice(itemNumber * 10000 + 3500);
+  }, [itemNumber]));
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
     className: "item-form-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 22
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Form"], {
     className: "item-form",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 23
     },
     __self: undefined
   }, __jsx("label", {
     htmlFor: "quantity",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 24
     },
     __self: undefined
   }, "\uC138\uD2B8 \uAC2F\uC218"), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["InputNumber"], {
@@ -306,14 +308,14 @@ const ItemForm = () => {
     onChange: onChangeItemNumber,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 25
     },
     __self: undefined
   }), __jsx("label", {
     htmlFor: "transport",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 26
     },
     __self: undefined
   }, "\uBC30\uC1A1\uB8CC"), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
@@ -321,21 +323,21 @@ const ItemForm = () => {
     value: '3500원',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 27
     },
     __self: undefined
   }), __jsx("label", {
     htmlFor: "price",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 28
     },
     __self: undefined
   }, "\uCD1D \uAE08\uC561"), __jsx("div", {
     id: "price",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 29
     },
     __self: undefined
   }, `${price}원`), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
@@ -343,7 +345,7 @@ const ItemForm = () => {
     className: "button-primary",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 30
     },
     __self: undefined
   }, "\uAD6C\uB9E4"))));

@@ -1,18 +1,22 @@
-import React,{useState, useCallback} from 'react';
+import React,{useState, useCallback,useEffect} from 'react';
 import {Form, Input, InputNumber,Button} from 'antd';
 import './ItemForm.styles.scss';
 export const useInput = (initValue=null) => {
     const [value,setter] = useState(initValue);
     const handler = useCallback( (e) => {
-        // setter(e.target.value);
-        console.log(e.target);
+        setter(e);
     }, []);
     return [value, handler]; 
 }
+
 const ItemForm = () => {
     const [itemNumber, onChangeItemNumber] = useInput(1);
     const [price, onChangePrice] = useInput(3500);
     
+    useEffect(useCallback(() => {
+        onChangePrice(itemNumber*10000 + 3500)
+    },[itemNumber])
+    );
     return (
         <>
             <div className="item-form-container">

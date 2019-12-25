@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux'; 
 import {Layout, Menu, BreadCrumb} from 'antd'; 
 import Link from 'next/link';
 
@@ -33,6 +34,9 @@ const Navigation = () => {
                     </Menu.Item>
                     <Menu.Item key="3">
                         <Link href="/payment"><a>결제</a></Link>
+                    </Menu.Item>
+                    <Menu.Item key="4">
+                        <Link href="/signIn"><a>로그인</a></Link>
                     </Menu.Item>
                 </Menu>
             </Header>
