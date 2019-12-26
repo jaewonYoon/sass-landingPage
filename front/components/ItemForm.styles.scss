@@ -1,0 +1,21 @@
+.item-form-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items:left;
+}
+.item-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items:left;
+    margin: 50px;
+}
+.item-form > * {
+    margin: 10px;
+}
+.button-primary {
+    width:50%;
+    height:50px;
+    margin: 150px 120px 50px;
+}

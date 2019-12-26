@@ -1,10 +1,12 @@
 import React from 'react';
-
+import CarouselContainer from '../components/Carousel.Component'; 
+import MainItem from '../components/MainItem.Component';
 const Home = () => {
     return (
-        <div>
-            Hello Next
-        </div>
+        <>
+            <CarouselContainer/>
+            <MainItem/>
+        </>
     )
 }
 

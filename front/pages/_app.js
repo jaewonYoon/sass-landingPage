@@ -12,7 +12,10 @@ const App = ({Component, store}) => {
         <>
             <Provider store={store}>
                 <Head>
+                    <title>coffee</title>
                     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet"/>
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/3.16.2/antd.css" />
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/antd/3.25.3/antd.min.js"></script>
                 </Head>
                 <AppLayout>
                     <Component />

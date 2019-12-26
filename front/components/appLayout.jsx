@@ -1,10 +1,11 @@
 import React from 'react';
 import Navigation from './Navigation';
-import './appLayout.sass'; 
-const AppLayout = () => {
+import './appLayout.scss'; 
+const AppLayout = ({children}) => {
     return (
         <>
             <Navigation/>
+            {children}
         </>
     );
 }
