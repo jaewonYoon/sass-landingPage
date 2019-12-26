@@ -30,7 +30,7 @@ export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
 export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
 export const LOG_OUT_FAILURE = 'LOG_OUT_FAILURE';
 
-export default( state=initialState, action) => {
+export default ( state=initialState, action) => {
     switch(action.type) {
         case LOG_IN_REQUEST: {
             return{
