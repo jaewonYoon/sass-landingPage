@@ -5,6 +5,8 @@ import withRedux from 'next-redux-wrapper';
 import rootReducer from '../reducers'; 
 import {createStore, compose, applyMiddleware} from 'redux'; 
 import createSagaMiddleware from 'redux-saga';
+
+import AppLayout from '../components/appLayout'; 
 const App = ({Component, store}) => {
     return(
         <>
@@ -12,7 +14,9 @@ const App = ({Component, store}) => {
                 <Head>
                     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet"/>
                 </Head>
-                <Component />
+                <AppLayout>
+                    <Component />
+                </AppLayout>
             </Provider> 
         </>
     )
