@@ -27,9 +27,9 @@ const CarouselContainer = () => {
         >
             {
             images.map((item,index) => {
-                let backgroundColor=''; 
                 if(index === 0){
                     backgroundColor = '#c8dee5';
+                    let backgroundColor=''; 
                 } else if(index ===1) {
                     backgroundColor = '#c8e5e0';
                 } else {

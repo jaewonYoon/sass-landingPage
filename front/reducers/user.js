@@ -8,7 +8,7 @@ export const initialState = {
     isLoggingIn: false,
     logInErrorReason: '',
     isSignedUp: false,
-    isSiginingUp: false,
+    isSigningUp: false,
     signUpErrorReason: '',
     me: null,
     shopList: [],
@@ -43,7 +43,8 @@ export default (state=initialState, action) => {
             return {
                 ...state,
                 isLoggingIn: false,
-                me: action.data,
+                // me: action.data,
+                me: dummyUser
             }
         }
         case LOG_IN_FAILURE: {
@@ -84,7 +85,7 @@ export default (state=initialState, action) => {
         case SIGN_UP_SUCCESS: {
             return {
                 ...state,
-                isSiginingUp: false, 
+                isSigningUp: false, 
                 isSignedUp: true 
             }
         }
