@@ -65,14 +65,14 @@ function* watchSignUp(){
 }
 
 function logOutAPI(){
-    return axios.post('/user/logout', {}, {
-        withCredentials: true,
-    });
+    // return axios.post('/user/logout', {}, {
+    //     withCredentials: true,
+    // });
 }
 
 function* logOut() {
     try {
-        yield call(logOutAPI);
+        // yield call(logOutAPI);
         yield put({
             type: LOG_OUT_SUCCESS,
         })

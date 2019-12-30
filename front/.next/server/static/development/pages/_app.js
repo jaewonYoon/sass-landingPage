@@ -165,8 +165,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LogoComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LogoComponent */ "./components/LogoComponent.jsx");
 /* harmony import */ var _Navigation_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Navigation.scss */ "./components/Navigation.scss");
 /* harmony import */ var _Navigation_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Navigation_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../reducers/user */ "./reducers/user.js");
 var _jsxFileName = "C:\\Users\\jaewon\\Desktop\\web\\udemy-sass\\front\\components\\Navigation.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -180,11 +182,22 @@ const {
 } = antd__WEBPACK_IMPORTED_MODULE_2__["Layout"];
 
 const Navigation = () => {
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
+
+  const logOut = () => {
+    dispatch({
+      type: _reducers_user__WEBPACK_IMPORTED_MODULE_6__["LOG_OUT_REQUEST"]
+    });
+  };
+
+  const {
+    me
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(selector => selector.user);
   return __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Layout"], {
     className: "layout",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 22
     },
     __self: undefined
   }, __jsx(Header, {
@@ -193,7 +206,7 @@ const Navigation = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 23
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"], {
@@ -205,93 +218,107 @@ const Navigation = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 26
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
     key: "1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 34
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 35
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 35
     },
     __self: undefined
   }, __jsx(_LogoComponent__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 36
     },
     __self: undefined
   })))), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
     key: "2",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 40
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/smartstore",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 41
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 41
     },
     __self: undefined
   }, "\uC2A4\uB9C8\uD2B8\uC2A4\uD1A0\uC5B4"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
     key: "3",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 43
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/payment",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 44
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 44
     },
     __self: undefined
-  }, "\uACB0\uC81C"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
+  }, "\uACB0\uC81C"))), me && me.id ? __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
     key: "4",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 47
+    },
+    __self: undefined
+  }, __jsx("a", {
+    onClick: logOut,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }, "\uB85C\uADF8\uC544\uC6C3")) : __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Menu"].Item, {
+    key: "5",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
     },
     __self: undefined
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/signIn",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 51
     },
     __self: undefined
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 51
     },
     __self: undefined
   }, "\uB85C\uADF8\uC778"))))));
@@ -2675,15 +2702,14 @@ function* watchSignUp() {
   yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["takeEvery"])(_reducers_user__WEBPACK_IMPORTED_MODULE_2__["SIGN_UP_REQUEST"], signUp);
 }
 
-function logOutAPI() {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/user/logout', {}, {
-    withCredentials: true
-  });
+function logOutAPI() {// return axios.post('/user/logout', {}, {
+  //     withCredentials: true,
+  // });
 }
 
 function* logOut() {
   try {
-    yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["call"])(logOutAPI);
+    // yield call(logOutAPI);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_OUT_SUCCESS"]
     });

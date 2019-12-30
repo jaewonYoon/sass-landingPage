@@ -12,6 +12,7 @@ const SignIn = () => {
     useEffect( () => {
         console.log(me);
         if(me){
+            console.log(me);
             alert('로그인 했으니 메인 페이지로 이동합니다.');
             Router.push('/'); 
         }
