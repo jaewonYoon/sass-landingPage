@@ -24,7 +24,6 @@ function logInAPI(loginData) {
 function * login(action){
     try{
         // const result = yield call(logInAPI, action.data);
-        delay(3000); 
         yield put({
             type: LOG_IN_SUCCESS,
             // data: result.data,

@@ -260,6 +260,7 @@ const SignInForm = props => {
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
+    className: "submit-btn",
     type: "primary",
     htmlType: "submit",
     style: {
@@ -309,7 +310,11 @@ const useInput = (initValue = null) => {
     1: setter
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(initValue);
   const handler = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
-    setter(e.target.value);
+    if (e.target) {
+      setter(e.target.value);
+    } else {
+      setter();
+    }
   }, []);
   return [value, handler];
 };
@@ -322,6 +327,7 @@ const SignUp = props => {
   const [passwordError, setpasswordError] = useInput('');
   const [confirmDirty, setConfirmDirty] = useInput('');
   const {
+    isSignedUp,
     isSigningUp
   } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(selector => selector.user);
   const {
@@ -329,8 +335,13 @@ const SignUp = props => {
   } = props.form;
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(e => {
-    console.log(`isSigningUp: ${isSigningUp}`);
-  }, [isSigningUp]);
+    if (isSignedUp === true) {
+      alert('회원가입 되었습니다.');
+      onChangePassword('');
+      onChangeId('');
+      onChangeCheckTerm(false);
+    }
+  }, [isSigningUp, isSignedUp]);
   const onSubmit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(e => {
     e.preventDefault();
 
@@ -379,14 +390,14 @@ const SignUp = props => {
     onSubmit: onSubmit,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 75
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
     label: "\uC774\uBA54\uC77C",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 76
     },
     __self: undefined
   }, getFieldDecorator('email', {
@@ -406,14 +417,15 @@ const SignUp = props => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 80
+        lineNumber: 91
       },
       __self: undefined
     }),
+    setFieldsvalue: id,
     onChange: onChangeId,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 89
     },
     __self: undefined
   }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
@@ -421,7 +433,7 @@ const SignUp = props => {
     hasFeedback: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 97
     },
     __self: undefined
   }, getFieldDecorator('password', {
@@ -433,6 +445,7 @@ const SignUp = props => {
     }]
   })(__jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Input"].Password, {
     placeholder: "Password",
+    setFieldsvalue: password,
     prefix: __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Icon"], {
       type: "lock",
       style: {
@@ -440,14 +453,14 @@ const SignUp = props => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 98
+        lineNumber: 111
       },
       __self: undefined
     }),
     onChange: onChangePassword,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 108
     },
     __self: undefined
   }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
@@ -455,7 +468,7 @@ const SignUp = props => {
     hasFeedback: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 102
+      lineNumber: 115
     },
     __self: undefined
   }, getFieldDecorator('confirm', {
@@ -474,21 +487,22 @@ const SignUp = props => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 115
+        lineNumber: 128
       },
       __self: undefined
     }),
     onChange: onChangePasswordCheck,
+    setFieldsvalue: passwordCheck,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 126
     },
     __self: undefined
   }))), __jsx("label", {
     htmlFor: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 133
     },
     __self: undefined
   }, "\uD68C\uC6D0\uAC00\uC785 \uC57D\uAD00\uC5D0 \uB3D9\uC758\uD569\uB2C8\uB2E4."), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Checkbox"], {
@@ -497,13 +511,13 @@ const SignUp = props => {
     onChange: onChangeCheckTerm,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120
+      lineNumber: 134
     },
     __self: undefined
   }), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Form"].Item, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 135
     },
     __self: undefined
   }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -515,7 +529,7 @@ const SignUp = props => {
     loading: isSigningUp,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 136
     },
     __self: undefined
   }, "\uB4F1\uB85D"))));
@@ -634,14 +648,16 @@ function _defineProperty(obj, key, value) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "antd");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_SignUpForm_Component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SignUpForm.Component */ "./components/SignUpForm.Component.jsx");
-/* harmony import */ var _components_SignInForm_Component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SignInForm.Component */ "./components/SignInForm.Component.jsx");
-/* harmony import */ var _signIn_styles_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./signIn.styles.scss */ "./pages/signIn.styles.scss");
-/* harmony import */ var _signIn_styles_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_signIn_styles_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! antd */ "antd");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_SignUpForm_Component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SignUpForm.Component */ "./components/SignUpForm.Component.jsx");
+/* harmony import */ var _components_SignInForm_Component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/SignInForm.Component */ "./components/SignInForm.Component.jsx");
+/* harmony import */ var _signIn_styles_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./signIn.styles.scss */ "./pages/signIn.styles.scss");
+/* harmony import */ var _signIn_styles_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_signIn_styles_scss__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "C:\\Users\\jaewon\\Desktop\\web\\udemy-sass\\front\\pages\\signIn.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -651,60 +667,68 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 const SignIn = () => {
-  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
-  const user = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(selector => selector.user);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
+  const {
+    me
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(selector => selector.user);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    console.log(user);
-  });
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Row"], {
+    console.log(me);
+
+    if (me) {
+      alert('로그인 했으니 메인 페이지로 이동합니다.');
+      next_router__WEBPACK_IMPORTED_MODULE_1___default.a.push('/');
+    }
+  }, [me && me.id]);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     gutter: 48,
     className: "sign-in-row",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-    xs: 12,
-    md: 10,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 20
-    },
-    __self: undefined
-  }, __jsx(_components_SignInForm_Component__WEBPACK_IMPORTED_MODULE_4__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 21
     },
     __self: undefined
-  })), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Col"], {
-    xs: 0,
-    md: 4,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: undefined
-  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     xs: 12,
     md: 10,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    },
-    __self: undefined
-  }, __jsx(_components_SignUpForm_Component__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 25
     },
     __self: undefined
-  })), __jsx(antd__WEBPACK_IMPORTED_MODULE_2__["Col"], {
+  }, __jsx(_components_SignInForm_Component__WEBPACK_IMPORTED_MODULE_5__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 26
+    },
+    __self: undefined
+  })), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    xs: 0,
+    md: 4,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    xs: 12,
+    md: 10,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  }, __jsx(_components_SignUpForm_Component__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: undefined
+  })), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
     },
     __self: undefined
   })));
@@ -992,6 +1016,17 @@ module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/keys");
+
+/***/ }),
+
+/***/ "next/router":
+/*!******************************!*\
+  !*** external "next/router" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/router");
 
 /***/ }),
 

@@ -93,7 +93,8 @@ const SignInForm = (props) => {
                         />)}
                 </Form.Item>
                 <Form.Item>
-                    <Button 
+                    <Button
+                        className='submit-btn'
                         type="primary" 
                         htmlType="submit" 
                         style={{float: 'right'}}

@@ -5,7 +5,12 @@ import {SIGN_UP_REQUEST} from '../reducers/user';
 export const useInput = (initValue=null) => {
     const [value,setter] = useState(initValue);
     const handler = useCallback( (e) => {
-        setter(e.target.value);
+        if(e.target){
+            setter(e.target.value);
+        }
+        else {
+            setter(); 
+        }
     }, []);
     return [value, handler]; 
 }
@@ -18,13 +23,19 @@ const SignUp = (props) => {
     const [passwordError, setpasswordError] = useInput('');
     const [confirmDirty, setConfirmDirty] = useInput('');
     
-    const {isSigningUp} = useSelector(selector => selector.user); 
+    const {isSignedUp, isSigningUp} = useSelector(selector => selector.user); 
     const {getFieldDecorator} = props.form; 
     
     const dispatch = useDispatch(); 
     useEffect( (e) => {
-        console.log(`isSigningUp: ${isSigningUp}`);
-    },[isSigningUp]);
+        if(isSignedUp ===true){
+            alert('회원가입 되었습니다.');
+            onChangePassword('');
+            onChangeId('');
+            onChangeCheckTerm(false);
+
+        }
+    },[isSigningUp,isSignedUp]);
 
     const onSubmit = useCallback((e) => {
              e.preventDefault(); 
@@ -78,6 +89,7 @@ const SignUp = (props) => {
                         })(<Input
                             placeholder="E-mail"
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            setFieldsvalue={id}
                             onChange={onChangeId}
                             />)
                     }
@@ -95,6 +107,7 @@ const SignUp = (props) => {
                         ]
                     })(<Input.Password 
                         placeholder="Password"
+                        setFieldsvalue={password}
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         onChange = {onChangePassword}
                         />)}
@@ -114,6 +127,7 @@ const SignUp = (props) => {
                         placeholder="Password Check"
                         prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                         onChange = {onChangePasswordCheck}
+                        setFieldsvalue={passwordCheck}
                     />)}
                 </Form.Item>
                 <label htmlFor='checkbox'>회원가입 약관에 동의합니다.</label>

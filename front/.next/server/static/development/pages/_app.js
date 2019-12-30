@@ -2635,7 +2635,6 @@ function logInAPI(loginData) {// return axios.post('/user/login', loginData,{
 function* login(action) {
   try {
     // const result = yield call(logInAPI, action.data);
-    Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["delay"])(3000);
     yield Object(redux_saga_effects__WEBPACK_IMPORTED_MODULE_0__["put"])({
       type: _reducers_user__WEBPACK_IMPORTED_MODULE_2__["LOG_IN_SUCCESS"] // data: result.data,
 

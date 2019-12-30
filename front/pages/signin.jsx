@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import Router from 'next/router'; 
 import {useDispatch, useSelector} from 'react-redux';
 import {Row, Col} from 'antd';
 
@@ -7,10 +8,14 @@ import SignInForm  from '../components/SignInForm.Component';
 import './signIn.styles.scss';
 const SignIn = () => {
     const dispatch = useDispatch();
-    const user = useSelector(selector => selector.user); 
+    const {me} = useSelector(selector => selector.user); 
     useEffect( () => {
-        console.log(user); 
-    })
+        console.log(me);
+        if(me){
+            alert('로그인 했으니 메인 페이지로 이동합니다.');
+            Router.push('/'); 
+        }
+    }, [me && me.id])
     return (
         <>
             <Row    
