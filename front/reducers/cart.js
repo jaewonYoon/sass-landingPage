@@ -40,6 +40,11 @@ export default (state = initialState, action) => {
                 purchaseList: []
             }
         }
+        default: {
+            return {
+                ...state 
+            }
+        }
     }
 }; 
 

@@ -2,4 +2,7 @@ body{
     @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
     font-family: 'Noto Sans KR';
     background-color:#f8f9fa;
+    > :not(section.layout){
+        margin: 0 30px; 
+    } 
 }

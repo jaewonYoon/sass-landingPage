@@ -8,7 +8,7 @@ export const initialState = {
     isLoggingIn: false,
     logInErrorReason: '',
     isSignedUp: false,
-    isSiginingUp: false,
+    isSigningUp: false,
     signUpErrorReason: '',
     me: null,
     shopList: [],
@@ -30,7 +30,7 @@ export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
 export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
 export const LOG_OUT_FAILURE = 'LOG_OUT_FAILURE';
 
-export default ( state=initialState, action) => {
+export default (state=initialState, action) => {
     switch(action.type) {
         case LOG_IN_REQUEST: {
             return{
@@ -43,7 +43,8 @@ export default ( state=initialState, action) => {
             return {
                 ...state,
                 isLoggingIn: false,
-                me: action.data,
+                // me: action.data,
+                me: dummyUser
             }
         }
         case LOG_IN_FAILURE: {
@@ -84,7 +85,7 @@ export default ( state=initialState, action) => {
         case SIGN_UP_SUCCESS: {
             return {
                 ...state,
-                isSiginingUp: false, 
+                isSigningUp: false, 
                 isSignedUp: true 
             }
         }
@@ -109,6 +110,11 @@ export default ( state=initialState, action) => {
         case LOAD_USER_FAILURE: {
             return {
                 ...state
+            }
+        }
+        default: {
+            return {
+                ...state 
             }
         }
     }

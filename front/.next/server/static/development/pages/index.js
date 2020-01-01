@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -121,7 +121,7 @@ const images = [{
   description: "최고의 커피를 집에서 받아보세요."
 }, {
   url: "/img/coffee.png",
-  description: "5시간동안 추출된 최상의 커피를 집앞으로 배송해 드립니다."
+  description: "8시간동안 추출된 최상의 커피를 집앞으로 배송해 드립니다."
 }, {
   url: "img/tea-time.png",
   // url2: "img/love.png",
@@ -131,18 +131,32 @@ const images = [{
 const CarouselContainer = () => {
   return __jsx(react_responsive_carousel__WEBPACK_IMPORTED_MODULE_2__["Carousel"], {
     showThumbs: false,
+    autoPlay: true,
+    infiniteLoop: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 23
     },
     __self: undefined
   }, images.map((item, index) => {
+    let backgroundColor = '';
+
+    if (index === 0) {
+      backgroundColor = '#c8dee5';
+    } else if (index === 1) {
+      backgroundColor = '#c8e5e0';
+    } else {
+      backgroundColor = '#a2842f';
+    }
+
+    let style = `background-color: "${backgroundColor}"`;
     return __jsx("div", {
       key: item.index,
       className: "carousel-container",
+      style: {},
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 40
       },
       __self: undefined
     }, __jsx("img", {
@@ -150,7 +164,7 @@ const CarouselContainer = () => {
       src: item.url,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 41
       },
       __self: undefined
     }), item.url2 ? __jsx("img", {
@@ -158,14 +172,14 @@ const CarouselContainer = () => {
       src: item.url2,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 42
       },
       __self: undefined
     }) : null, __jsx("div", {
       className: "carousel-description",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 43
       },
       __self: undefined
     }, item.description, " "));
@@ -459,25 +473,37 @@ const MainItem = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Carousel_Component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Carousel.Component */ "./components/Carousel.Component.jsx");
-/* harmony import */ var _components_MainItem_Component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/MainItem.Component */ "./components/MainItem.Component.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Carousel_Component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Carousel.Component */ "./components/Carousel.Component.jsx");
+/* harmony import */ var _components_MainItem_Component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/MainItem.Component */ "./components/MainItem.Component.jsx");
 var _jsxFileName = "C:\\Users\\jaewon\\Desktop\\web\\sass-landingPage\\front\\pages\\index.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+
 const Home = () => {
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_Carousel_Component__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  const {
+    me
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(selector => selector.user);
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (me && me.id) {
+      console.log(`me가 로그인한 상태입니다.`);
+    }
+  }, [me && me.id]);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_components_Carousel_Component__WEBPACK_IMPORTED_MODULE_2__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 15
     },
     __self: undefined
-  }), __jsx(_components_MainItem_Component__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), __jsx(_components_MainItem_Component__WEBPACK_IMPORTED_MODULE_3__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 16
     },
     __self: undefined
   }));
@@ -487,7 +513,7 @@ const Home = () => {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -518,6 +544,17 @@ module.exports = require("antd");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-redux":
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ }),
 
