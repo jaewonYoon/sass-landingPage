@@ -1,7 +1,7 @@
 import React from 'react';
+import Landing from '../components/Payment/Landing';
+
 const Payment = () => (
-    <div>
-        payment
-    </div>
-)
+    <Landing/>
+);
 export default Payment;
